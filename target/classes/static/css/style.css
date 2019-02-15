@@ -1,3 +1,8 @@
+#player{
+	width: 100%;
+	height: auto;
+}
+
 #main-grid a{
 	color: var(--yt-spec-text-primary);
 	text-decoration: none;
@@ -9,7 +14,7 @@
 }
 
 #main-grid .thumbnail h6{
-	width: 250px;
+	width: 100%;
 	display: inline-block;
     white-space: nowrap;
     overflow: hidden !important;
@@ -17,7 +22,7 @@
 }
 
 #main-grid .thumbnail img{
-	width: 250px;
+	width: 100%;
 	height: 150px;
 }
 
@@ -87,17 +92,8 @@ section .section-title {
 		width: 200px;
 		height: auto;
 	}
-	
-	#main-grid .thumbnail h6{
-		width: 200px;
-		display: inline-block;
-	    white-space: nowrap;
-	    overflow: hidden !important;
-	    text-overflow: ellipsis;
-	}
 
 	#main-grid .thumbnail img{
-		width: 200px;
 		height: 100px;
 	}
 }
@@ -108,16 +104,18 @@ section .section-title {
 		height: auto;
 	}
 	
-	#main-grid .thumbnail h6{
-		width: 140px;
-		display: inline-block;
-	    white-space: nowrap;
-	    overflow: hidden !important;
-	    text-overflow: ellipsis;
+	#main-grid .thumbnail img{
+		height: 80px;
+	}
+}
+
+@media only screen and (max-width: 600px) {
+	#main-grid .thumbnail{
+		width: 100%;
+		height: auto;
 	}
 
 	#main-grid .thumbnail img{
-		width: 140px;
-		height: 80px;
+		height: 150px;
 	}
 }

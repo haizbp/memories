@@ -2,30 +2,33 @@
 <html xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
 	layout:decorate="~{layout/layout.html}">
 <head>
-<meta name="description" content="Website chia sẻ những khoảnh khắc đáng nhớ trong cuộc sống!" />
+<meta name="description"
+	content="Website chia sẻ những khoảnh khắc đáng nhớ trong cuộc sống!" />
 <meta name="subject" th:content="${model.title}">
 <title th:text="${model.title}"></title>
 </head>
 <body>
 	<div layout:fragment="custom-content">
+		<nav aria-label="breadcrumb">
+			<ol class="breadcrumb">
+				<li class="breadcrumb-item"><a th:href="@{/}">Trang chủ</a></li>
+				<li class="breadcrumb-item active" aria-current="page"
+					th:text="${model.title}"></li>
+			</ol>
+		</nav>
 		<div class="container mb-4">
-			<nav aria-label="breadcrumb">
-				<ol class="breadcrumb">
-					<li class="breadcrumb-item"><a th:href="@{/}">Trang chủ</a></li>
-					<li class="breadcrumb-item active" aria-current="page" th:text="${model.title}"></li>
-				</ol>
-			</nav>
-			<iframe id="player" th:src="${model.url}"
-				frameborder="0"
-				allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture"
-				allowfullscreen></iframe>
+			<!-- 			<div id="player"></div> -->
+			<iframe id="player" th:src="${model.url}" frameborder="0"
+							allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture"
+							allowfullscreen></iframe>
 		</div>
+		<nav aria-label="breadcrumb">
+			<ol class="breadcrumb">
+				<li class="breadcrumb-item active" aria-current="page">Có thể
+					bạn sẽ muốn xem</li>
+			</ol>
+		</nav>
 		<div class="container-fluid" id="main-grid">
-			<nav aria-label="breadcrumb">
-				<ol class="breadcrumb">
-					<li class="breadcrumb-item active" aria-current="page">Có thể bạn sẽ muốn xem</li>
-				</ol>
-			</nav>
 			<div class="row mb-3  text-center">
 				<div class="col-md-3" v-for="e in recommended.content">
 					<div class="thumbnail">
@@ -38,22 +41,23 @@
 			</div>
 		</div>
 	</div>
-	<div layout:fragment="custom-js">
-	<script th:src="@{/resources/js/control/view.js}"></script>
-	<script type="text/javascript">
+	<th:block layout:fragment="custom-js">
+		<script th:src="@{/resources/js/control/view.js}"></script>
+		<script type="text/javascript">
 			$(function() {
 				playerinitialize();
-				$( window ).resize(function() {
+				$(window).resize(function() {
 					playerinitialize();
 				});
 			});
-			
-			function playerinitialize(){
+
+			function playerinitialize() {
 				var player = $("#player");
 				var playerWidth = player.width();
-				player.height(playerWidth / 2)
+				var playerHeight = playerWidth / 2;
+				player.height(playerHeight);
 			}
 		</script>
-	</div>
+	</th:block>
 </body>
 </html>
