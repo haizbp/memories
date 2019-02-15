@@ -8,85 +8,28 @@
 	<div layout:fragment="custom-content">
 		<nav aria-label="breadcrumb">
 			<ol class="breadcrumb">
-				<li class="breadcrumb-item active" aria-current="page">Recommended for you!</li>
+				<li class="breadcrumb-item active" aria-current="page">Recommended
+					for you!</li>
 			</ol>
 		</nav>
 		<div class="container-fluid" id="main-grid">
 			<div class="row mb-3">
-				<div class="col-md-3">
+				<div class="col-md-3" v-for="e in recommended.content">
 					<div class="thumbnail">
-						<a href="#"
-							title="How does it send slight different emails to multiple
-									recipients, though having them in common 'to' section?">
-							<img src="http://i3.ytimg.com/vi/puDMCV2t11I/hqdefault.jpg" />
-							<h6>How does it send slight different emails to multiple
-								recipients, though having them in common 'to' section?</h6>
-						</a>
-					</div>
-				</div>
-				<div class="col-md-3">
-					<div class="thumbnail">
-						<a href="#"> <img
-							src="http://i3.ytimg.com/vi/puDMCV2t11I/hqdefault.jpg" />
-							<h6>CTE with DELETE - Alternative for SQL Data Warehouse</h6>
-						</a>
-					</div>
-				</div>
-				<div class="col-md-3">
-					<div class="thumbnail">
-						<a href="#"> <img
-							src="http://i3.ytimg.com/vi/puDMCV2t11I/hqdefault.jpg" />
-							<h6>Understanding multiple Linear regression</h6>
-						</a>
-					</div>
-				</div>
-				<div class="col-md-3">
-					<div class="thumbnail">
-						<a href="#"> <img
-							src="http://i3.ytimg.com/vi/puDMCV2t11I/hqdefault.jpg" />
-							<h6>bash: function with two array parameters? how to call
-								and how to parse?</h6>
+						<a :href="'/view/'+e.id" :title="e.title"> <img
+							:src="e.thumbnail" />
+							<h6>{{e.title}}</h6>
 						</a>
 					</div>
 				</div>
 			</div>
 			<div class="row mb-3">
-				<div class="col-md-3">
-					<div class="thumbnail">
-						<a href="#"> <img
-							src="http://i3.ytimg.com/vi/puDMCV2t11I/hqdefault.jpg" />
-							<h6>views Class not found execption</h6>
-						</a>
-					</div>
-				</div>
-				<div class="col-md-3">
-					<div class="thumbnail">
-						<a href="#"> <img
-							src="http://i3.ytimg.com/vi/puDMCV2t11I/hqdefault.jpg" />
-							<h6>Having 3 Entities, get the third Entity as a result,
-								based on the number of relations(count) of the other 2 Entities</h6>
-						</a>
-					</div>
-				</div>
-				<div class="col-md-3">
-					<div class="thumbnail">
-						<a href="#"> <img
-							src="http://i3.ytimg.com/vi/puDMCV2t11I/hqdefault.jpg" />
-							<h6>Dividing by the power of digit position of integer</h6>
-						</a>
-					</div>
-				</div>
-				<div class="col-md-3">
-					<div class="thumbnail">
-						<a href="#"> <img
-							src="http://i3.ytimg.com/vi/puDMCV2t11I/hqdefault.jpg" />
-							<h6>Is it possible to rewrite HOST header in k8s Ingress
-								Controller?</h6>
-						</a>
-					</div>
-				</div>
+				<button v-show="recommended.showLoadMore" type="button" v-on:click="loadMore" class="btn btn-primary">Submit</button>
 			</div>
 		</div>
+	</div>
+	<div layout:fragment="custom-js">
+		<script th:src="@{/resources/js/control/home.js}"></script>
 	</div>
 </body>
 </html>

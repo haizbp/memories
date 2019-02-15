@@ -8,6 +8,7 @@ public class VideoModel {
 
 	private String id;
 	private String title;
+	private String thumbnail;
 	private String description;
 	private String url;
 	private Integer view;
@@ -74,6 +75,14 @@ public class VideoModel {
 		this.createTime = createTime;
 	}
 
+	public String getThumbnail() {
+		return thumbnail;
+	}
+
+	public void setThumbnail(String thumbnail) {
+		this.thumbnail = thumbnail;
+	}
+
 	public static VideoModel toModel(VideoEntity entity) {
 		VideoModel model = new VideoModel();
 
@@ -84,6 +93,7 @@ public class VideoModel {
 		model.setView(entity.getView());
 		model.setRate(entity.getRate());
 		model.setCreateTime(entity.getCreateTime());
+		model.setThumbnail(entity.getThumbnail());
 		
 		return model;
 	}

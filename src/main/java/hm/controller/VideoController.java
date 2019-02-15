@@ -53,5 +53,16 @@ public class VideoController {
 		return response;
 
 	}
+	
+	@GetMapping("/random/{limitRecordds}")
+	public Response random(@PathVariable("limitRecordds") Integer limitRecordds) {
+
+		Response response = new Response();
+
+		response.setData(videoService.random(limitRecordds));
+
+		return response;
+
+	}
 
 }

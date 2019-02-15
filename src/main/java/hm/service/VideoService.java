@@ -28,6 +28,9 @@ public class VideoService {
 
 	@Value("${configuration.youtube.url.embed}")
 	private String youtubeEmbed;
+	
+	@Value("${configuration.youtube.url.thumbnail}")
+	private String youtubeThumbnail;
 
 	@Autowired
 	private VideoRepository videoRepository;
@@ -45,6 +48,7 @@ public class VideoService {
 
 		if (doing) {
 			model.setUrl(String.format(youtubeEmbed, videoId));
+			model.setThumbnail(String.format(youtubeThumbnail, videoId));
 			model.setId(UUID.randomUUID().toString());
 			VideoEntity entity = VideoEntity.toEntity(model);
 
@@ -82,6 +86,22 @@ public class VideoService {
 		response.put("content", videoModels);
 		
 		return response;
+	}
+	
+	public List<VideoModel> random(int limitRecords){
+		Map<String, Object> response = new HashMap<>();
+		
+		List<VideoEntity> videoPage = videoRepository.random(limitRecords);
+		
+		List<VideoModel> videoModels = new ArrayList<>();
+		
+		for (VideoEntity entity : videoPage) {
+			videoModels.add(VideoModel.toModel(entity));
+		}
+		
+		response.put("content", videoModels);
+		
+		return videoModels;
 	}
 
 	public VideoModel get(String id) {

@@ -14,19 +14,24 @@
 		</nav>
 		<form>
 			<div class="form-group">
-				<label for="postTitle">Video title</label> <input type="text"
-					class="form-control" id="postTitle" placeholder="Video title">
+				<label for="postTitle">Video title</label> <input type="text" v-model="form.title"
+					name="title" class="form-control" id="postTitle"
+					placeholder="Video title">
 			</div>
 			<div class="form-group">
-				<label for="postUrl">Video url</label> <input type="text"
+				<label for="postUrl">Video url</label> <input type="text" name="url"  v-model="form.url"
 					class="form-control" id="postUrl" placeholder="Video url">
 			</div>
 			<div class="form-group">
 				<label for="comment">Video description</label>
-				<textarea class="form-control" rows="5" id="comment" placeholder="Video description" name="text"></textarea>
+				<textarea name="description" class="form-control" rows="5"  v-model="form.description"
+					id="comment" placeholder="Video description"></textarea>
 			</div>
-			<button type="submit" class="btn btn-primary">Submit</button>
+			<button type="button" v-on:click="action" class="btn btn-primary">Submit</button>
 		</form>
+	</div>
+	<div layout:fragment="custom-js">
+		<script th:src="@{/resources/js/control/post.js}"></script>
 	</div>
 </body>
 </html>
