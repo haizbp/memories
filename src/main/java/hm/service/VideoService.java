@@ -69,7 +69,7 @@ public class VideoService {
 	public Map<String, Object> findAll(int page){
 		Map<String, Object> response = new HashMap<>();
 		
-		Pageable pageable = PageRequest.of(page - 1, 10, Sort.by("createTime").descending());
+		Pageable pageable = PageRequest.of(page - 1, 12, Sort.by("createTime").descending());
 		Page<VideoEntity> videoPage = videoRepository.findAll(pageable);
 		
 		response.put("page", page);
